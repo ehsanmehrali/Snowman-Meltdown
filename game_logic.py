@@ -29,8 +29,7 @@ def display_game_state(mistakes, secret_word, guessed_letters):
             display_word += "_ "
 
     print("Word: ", display_word)
-    print("Guessed letters:")
-    print("✏️ ", " ".join(sorted(guessed_letters)))
+    print("✏️ Guessed letters: ", " ".join(sorted(guessed_letters)))
 
 
 def continue_game():
@@ -52,14 +51,13 @@ def play_game():
     max_mistake = len(STAGES)
 
     print("Welcome to Snowman Meltdown!")
-    # For now, display the initial game state.
 
+    # For now, display the initial game state.
     while mistakes < max_mistake:
         display_game_state(mistakes, secret_word, guessed_letters)
 
         # Prompt user for one guess (logic to be enhanced later)
         guess = input("Guess a letter: ").lower()
-
 
         if not guess.isalpha() or len(guess) != 1:
             print("🤬 Enter a single valid letter.\n")
@@ -91,7 +89,6 @@ def play_game():
 
     if continue_game():
         play_game()
-
 
 
 if __name__ == "__main__":
