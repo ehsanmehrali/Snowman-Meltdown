@@ -23,6 +23,7 @@ def display_game_state(mistakes, secret_word, guessed_letters):
             display_word += "_ "
 
     print("Word: ", display_word)
+    print("✏️ Guessed letters:", " ".join(sorted(guessed_letters)))
     print("\n")
 
 
