@@ -91,7 +91,7 @@ def play_game():
         answer = all([letter in guessed_letters for letter in secret_word])
         if answer:
             display_game_state(mistakes, secret_word, guessed_letters)
-            print("🥳 Congratulations! You saved the snowman!")
+            print("\n 🥳 Congratulations! You saved the snowman!")
 
             if continue_game():
                 play_game()
