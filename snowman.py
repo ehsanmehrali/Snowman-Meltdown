@@ -70,16 +70,19 @@ def play_game():
         # Prompt user for one guess (logic to be enhanced later)
         guess = input("Guess a letter: ").lower()
         guessed_letters.append(guess)
-        # print("You guessed:", guess)
+
+        if not guess.isalpha() or len(guess) != 1:
+            print("🤬 Enter a single valid letter.\n")
+            continue
 
         if guess not in secret_word:
             mistakes += 1
             print(f"OOPS! '{guess}' is not in the word.\n")
 
-        answer = [letter in guessed_letters for letter in secret_word]
-        if all(answer):
+        answer = all([letter in guessed_letters for letter in secret_word])
+        if answer:
             display_game_state(mistakes, secret_word, guessed_letters)
-            print("🎉 Congratulations! You saved the snowman!")
+            print("🥳 Congratulations! You saved the snowman!")
             return
 
 
