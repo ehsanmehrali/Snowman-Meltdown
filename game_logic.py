@@ -12,10 +12,12 @@ def get_random_word():
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
+
+    header_title = "❄️  Snowman Meltdown Game  ❄️"
     # Header
-    print("=" * 28)
-    print("❄️  Snowman Meltdown Game ❄️")
-    print("=" * 28)
+    print("=" * 75)
+    print(f"{header_title:.^75}")
+    print("=" * 75)
 
     # Display the snowman stage for the current number of mistakes.
     print(STAGES[mistakes])
@@ -48,7 +50,7 @@ def play_game():
     secret_word = get_random_word()
     guessed_letters = []
     mistakes = 0
-    max_mistake = len(STAGES)
+    max_mistake = len(STAGES) - 1
 
     print("Welcome to Snowman Meltdown!")
 
@@ -83,7 +85,7 @@ def play_game():
                 play_game()
 
     # If we get here, even the hat will melt.
-    display_game_state(mistakes - 1, secret_word, guessed_letters)
+    display_game_state(mistakes , secret_word, guessed_letters)
     print("\n💧 The snowman has completely melted!")
     print("🫥 The word was:", secret_word)
 
