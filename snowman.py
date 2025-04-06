@@ -36,7 +36,7 @@ STAGES = [
 
 def get_random_word():
     """Selects a random word from the list."""
-    return WORDS[random.randint(0, len(WORDS) - 1)]
+    return random.choice(WORDS)
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
@@ -49,10 +49,9 @@ def display_game_state(mistakes, secret_word, guessed_letters):
             display_word += letter + " "
         else:
             display_word += "_ "
-    mistakes += 1
+
     print("Word: ", display_word)
     print("\n")
-    return mistakes
 
 
 
@@ -85,6 +84,10 @@ def play_game():
             print("🥳 Congratulations! You saved the snowman!")
             return
 
+    # If we get here, even the hat will melt.
+    display_game_state(mistakes - 1, secret_word, guessed_letters)
+    print("💧 The snowman has completely melted!")
+    print("🫥 The word was:", secret_word)
 
 if __name__ == "__main__":
     play_game()
