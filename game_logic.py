@@ -12,6 +12,9 @@ def get_random_word():
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
+    """
+    Displays snowman and guessed letters.
+    """
 
     header_title = "❄️  Snowman Meltdown Game  ❄️"
     # Header
@@ -35,6 +38,10 @@ def display_game_state(mistakes, secret_word, guessed_letters):
 
 
 def continue_game():
+    """
+    Ask users if they want to play again.
+    :return: True
+    """
     while True:
         answer = input("\nDo you want to play again? (y-n) ").lower()
         if answer == "yes" or answer == "y":
@@ -46,7 +53,11 @@ def continue_game():
             print("Invalid input! (y-n)")
 
 
+
 def play_game():
+    """
+    Initial game setup, and checking whether the answer is correct or incorrect.
+    """
     secret_word = get_random_word()
     guessed_letters = []
     mistakes = 0
@@ -61,6 +72,7 @@ def play_game():
         # Prompt user for one guess (logic to be enhanced later)
         guess = input("Guess a letter: ").lower()
 
+        # Validate Input
         if not guess.isalpha() or len(guess) != 1:
             print("🤬 Enter a single valid letter.\n")
             continue
