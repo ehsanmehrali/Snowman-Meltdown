@@ -33,6 +33,18 @@ def display_game_state(mistakes, secret_word, guessed_letters):
     print("✏️ ", " ".join(sorted(guessed_letters)))
 
 
+def continue_game():
+    while True:
+        answer = input("\nDo you want to play again? (y-n) ").lower()
+        if answer == "yes" or answer == "y":
+            return True
+        elif answer == "no" or answer == "n":
+            print("\n 🤗Thank you for playing")
+            exit()
+        else:
+            print("Invalid input! (y-n)")
+
+
 def play_game():
     secret_word = get_random_word()
     guessed_letters = []
@@ -68,12 +80,17 @@ def play_game():
         if answer:
             display_game_state(mistakes, secret_word, guessed_letters)
             print("🥳 Congratulations! You saved the snowman!")
-            return
+
+            if continue_game():
+                play_game()
 
     # If we get here, even the hat will melt.
     display_game_state(mistakes - 1, secret_word, guessed_letters)
     print("\n💧 The snowman has completely melted!")
     print("🫥 The word was:", secret_word)
+
+    if continue_game():
+        play_game()
 
 
 
